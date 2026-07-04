@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SHIR CO | Science over trend</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#fafafa;
+color:#222;
+overflow-x:hidden;
+}
+
+header{
+height:100vh;
+background:url('https://i.ibb.co.com/3yxmn2sM/5353015520413817211.jpg') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+header::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+}
+
+.hero{
+position:relative;
+z-index:2;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:55px;
+}
+
+.hero h2{
+font-weight:300;
+margin:20px 0;
+}
+
+.hero button{
+padding:16px 40px;
+border:none;
+background:#000;
+color:white;
+border-radius:40px;
+font-size:18px;
+cursor:pointer;
+}
+
+section{
+padding:70px 20px;
+}
+
+.title{
+text-align:center;
+font-size:36px;
+margin-bottom:40px;
+}
+
+.carousel{
+display:flex;
+overflow-x:auto;
+scroll-behavior:smooth;
+gap:25px;
+padding-bottom:20px;
+}
+
+.carousel::-webkit-scrollbar{
+display:none;
+}
+
+.card{
+min-width:280px;
+background:white;
+border-radius:20px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+padding:20px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+}
+
+.card h3{
+margin:15px 0 8px;
+}
+
+.price{
+font-size:20px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.card button{
+background:black;
+color:white;
+padding:12px 28px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+.cartBtn{
+position:fixed;
+right:20px;
+bottom:95px;
+background:black;
+color:white;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+cursor:pointer;
+z-index:1000;
+}
+
+.count{
+position:absolute;
+top:-4px;
+right:-4px;
+background:red;
+color:white;
+font-size:13px;
+padding:3px 8px;
+border-radius:50%;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+color:white;
+font-size:30px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+text-decoration:none;
+}
+
+.drawer{
+position:fixed;
+top:0;
+right:-100%;
+width:350px;
+height:100%;
+background:white;
+box-shadow:-8px 0 20px rgba(0,0,0,.2);
+padding:25px;
+transition:.4s;
+overflow:auto;
+z-index:2000;
+}
+
+.drawer.active{
+right:0;
+}
+
+.drawer h2{
+margin-bottom:20px;
+}
+
+.item{
+margin-bottom:10px;
+padding:10px;
+background:#f4f4f4;
+border-radius:8px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+.send{
+margin-top:20px;
+width:100%;
+padding:15px;
+background:black;
+color:white;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:38px;
+}
+
+.hero h2{
+font-size:18px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="hero">
+
+<h1>SHIR CO</h1>
+
+<h2>Science over trend.<br>Made by MBBS student</h2>
+
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+
+Shop Now
+
+</button>
+
+</div>
+
+</header>
+
+<section id="products">
+
+<h2 class="title">Our Products</h2>
+
+<div class="carousel">
+
+<div class="card">
+
+<img src="https://i.ibb.co.com/5xxx1ns3/5353015520413817192.jpg">
+
+<h3>Sunscreen SPF 65</h3>
+
+<div class="price">₹499</div>
+
+<button onclick="addCart('Sunscreen SPF65')">
+
+Add to Cart
+
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.ibb.co.com/JFyXZrS1/5353015520413817193.jpg">
+
+<h3>Vitamin C Serum</h3>
+
+<div class="price">₹699</div>
+
+<button onclick="addCart('Vitamin C Serum')">
+
+Add to Cart
+
+</button>
+
+</div>
+
+<div class="card">
+
+<img src="https://i.ibb.co.com/PvkNKsQK/5353015520413817198.jpg">
+
+<h3>Face Wash</h3>
+
+<div class="price">₹399</div>
+
+<button onclick="addCart('Face Wash')">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="cartBtn" onclick="toggleCart()">
+
+🛒
+
+<div class="count" id="count">0</div>
+
+</div>
+
+<div class="drawer" id="drawer">
+
+<h2>Your Cart</h2>
+
+<div id="items"></div>
+
+<input id="name" placeholder="Customer Name">
+
+<input id="phone" placeholder="Phone Number">
+
+<button class="send" onclick="sendEmail()">
+
+Send Order
+
+</button>
+
+</div>
+
+<a class="whatsapp"
+
+href="https://wa.me/918883338348"
+
+target="_blank">
+
+💬
+
+</a>
+
+<script>
+
+emailjs.init("YOUR_PUBLIC_KEY");
+
+let cart=[];
+
+function addCart(name){
+
+cart.push(name);
+
+document.getElementById("count").innerHTML=cart.length;
+
+render();
+
+}
+
+function render(){
+
+let html="";
+
+cart.forEach(item=>{
+
+html+=`<div class="item">${item}</div>`;
+
+});
+
+document.getElementById("items").innerHTML=html;
+
+}
+
+function toggleCart(){
+
+document.getElementById("drawer").classList.toggle("active");
+
+}
+
+function sendEmail(){
+
+let name=document.getElementById("name").value;
+
+let phone=document.getElementById("phone").value;
+
+if(name==""||phone==""){
+
+alert("Fill customer details");
+
+return;
+
+}
+
+emailjs.send(
+
+"YOUR_SERVICE_ID",
+
+"YOUR_TEMPLATE_ID",
+
+{
+
+customer_name:name,
+
+customer_phone:phone,
+
+order:cart.join(", "),
+
+owner_email:"Shirco9@gmail.com"
+
+}
+
+)
+
+.then(()=>{
+
+alert("Order Sent!");
+
+cart=[];
+
+render();
+
+document.getElementById("count").innerHTML=0;
+
+});
+
+}
+
+setInterval(()=>{
+
+document.querySelector(".carousel").scrollBy({
+
+left:310,
+
+behavior:"smooth"
+
+});
+
+},3500);
+
+</script>
+
+</body>
+</html>
